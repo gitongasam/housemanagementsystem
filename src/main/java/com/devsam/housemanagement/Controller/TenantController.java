@@ -19,7 +19,7 @@ public class TenantController {
     }
 
 
-    @PostMapping("/")
+    @PostMapping("/register")
     public Tenancy createTenant(@RequestBody Tenancy tenancy) {
         return tenantService.createTenancy(tenancy);
     }
@@ -40,7 +40,7 @@ public class TenantController {
         return tenantService.getTenancyById(tenantId);
     }
 
-    @GetMapping("/")
+    @GetMapping("/all")
     public List<Tenancy> getAllTenants() {
         return tenantService.getAllTenancies();
     }
