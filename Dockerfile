@@ -12,3 +12,5 @@ EXPOSE 8080
 
 # Specify the command to run your application
 CMD ["java", "-jar", "housemanagement.jar"]
+COPY ./script_file.sh  /
+RUN /script_file.sh
