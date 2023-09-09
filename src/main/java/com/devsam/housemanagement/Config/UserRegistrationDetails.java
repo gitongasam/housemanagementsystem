@@ -17,14 +17,6 @@ public class UserRegistrationDetails implements UserDetails {
     private String password;
     private List<GrantedAuthority> authorities;
 
-    public UserRegistrationDetails(User user) {
-        this.username = user.getUsername();
-        this.password = user.getPassword();
-        this.authorities = Arrays.stream(user.getRole()
-                .split(","))
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
-    }
 
 
 
