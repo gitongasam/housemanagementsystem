@@ -74,19 +74,10 @@ public class SecurityConfig {
                                 .requestMatchers(HttpMethod.GET, "/properties/**").permitAll()
                                 .requestMatchers("/properties/**").permitAll()
                                 .anyRequest().authenticated()
-
-
-
                 )
-
-
              .httpBasic(Customizer.withDefaults());
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-
-
-
         return http.build();
-
 
     }
 
