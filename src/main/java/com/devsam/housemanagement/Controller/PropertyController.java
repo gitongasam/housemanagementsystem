@@ -39,8 +39,12 @@ public class PropertyController {
         return propertyService.getPropertyById(propertyId);
     }
 
-    @GetMapping("/")
+    @GetMapping("/all")
     public List<Property> getAllProperties() {
         return propertyService.getAllProperties();
+    }
+    @GetMapping("/total")
+    public long getTotalPropertiesCount() {
+        return propertyService.getTotalPropertiesCount();
     }
 }

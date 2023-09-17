@@ -41,4 +41,9 @@ public class PropertyServiceImpl implements PropertyService {
     public List<Property> getAllProperties() {
         return propertyRepository.findAll();
     }
+
+
+    public long getTotalPropertiesCount() {
+        return propertyRepository.count(); // Assuming your repository has a 'count' method
+    }
 }

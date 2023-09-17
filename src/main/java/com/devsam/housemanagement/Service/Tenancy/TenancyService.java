@@ -1,7 +1,5 @@
 package com.devsam.housemanagement.Service.Tenancy;
 
-import com.devsam.housemanagement.Entity.Tenancy;
-
 import java.util.List;
 
 public interface TenancyService {

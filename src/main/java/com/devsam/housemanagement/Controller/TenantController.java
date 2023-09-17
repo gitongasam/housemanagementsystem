@@ -1,6 +1,5 @@
 package com.devsam.housemanagement.Controller;
 
-import com.devsam.housemanagement.Entity.Tenancy;
 import com.devsam.housemanagement.Service.Tenancy.TenancyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

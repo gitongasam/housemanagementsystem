@@ -1,6 +1,5 @@
 package com.devsam.housemanagement.Service.Tenancy;
 
-import com.devsam.housemanagement.Entity.Tenancy;
 import com.devsam.housemanagement.Repository.TenancyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

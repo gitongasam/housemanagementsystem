@@ -54,4 +54,5 @@ public class UserRegistrationDetails implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
 }
