@@ -1,6 +1,5 @@
 package com.devsam.housemanagement.Config;
 
-import com.devsam.housemanagement.Entity.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
