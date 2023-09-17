@@ -1,40 +1,26 @@
 package com.devsam.housemanagement.Entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-@Entity
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="property_manager")
-@Getter
-@Setter
-
 public class PropertyManager {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column(unique = true)
-    private String username;
-    private String firstname;
-    private String lastname;
-
-    private String password;
-    @Column(unique = true)
+    private String firstName;
+    private String lastName;
     private String email;
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "propertyManager_roles",
-            joinColumns = @JoinColumn(name = "propertyManager_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private List<Role> roles=new ArrayList<>();
+    private String idNumber;
+    @OneToMany(mappedBy = "propertyManager", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<RentalProperty> rentalProperties = new HashSet<>();
 
 }
