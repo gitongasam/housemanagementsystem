@@ -1,7 +1,5 @@
 package com.devsam.housemanagement.Controller;
 
-import com.devsam.housemanagement.Config.JWTGenerator;
-import com.devsam.housemanagement.Entity.AuthResponseDTO;
 import com.devsam.housemanagement.Entity.LoginDto;
 import com.devsam.housemanagement.Entity.User;
 import com.devsam.housemanagement.Service.User.UserService;
@@ -27,9 +25,6 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
-    @Autowired
-    private JWTGenerator jwtGenerator;
 
     @PostMapping("/register")
     public User createUser(@RequestBody User user) {
@@ -60,14 +55,12 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @PostMapping("login")
-    public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto){
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginDto.getUsername(),
-                        loginDto.getPassword()));
+    @PostMapping("/login")
+    public ResponseEntity<String> authenticateUser(@RequestBody LoginDto loginDto){
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                loginDto.getEmail(), loginDto.getPassword()));
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token = jwtGenerator.generateToken(authentication);
-        return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
+        return new ResponseEntity<>("User signed-in successfully!.", HttpStatus.OK);
     }
 }
