@@ -1,13 +1,13 @@
 package com.devsam.housemanagement.Service.User;
 
-import com.devsam.housemanagement.Entity.PropertyManager;
+import com.devsam.housemanagement.Entity.User;
 
 import java.util.List;
 
 public interface UserService {
-    PropertyManager createUser(PropertyManager propertyManager);
-    PropertyManager updateUser(PropertyManager propertyManager);
+    User createUser(User user);
+    User updateUser(User user);
     void deleteUser(Long userId);
-    PropertyManager getUserById(Long userId);
-    List<PropertyManager> getAllUsers();
+    User getUserById(Long userId);
+    List<User> getAllUsers();
 }

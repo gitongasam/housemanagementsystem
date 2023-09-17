@@ -9,5 +9,4 @@ public interface PropertyService {
     void deleteProperty(Long propertyId);
     Property getPropertyById(Long propertyId);
     List<Property> getAllProperties();
-    long getTotalPropertiesCount();
 }

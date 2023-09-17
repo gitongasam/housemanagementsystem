@@ -1,7 +1,7 @@
 package com.devsam.housemanagement.Config;
 
-import com.devsam.housemanagement.Entity.PropertyManager;
 import com.devsam.housemanagement.Entity.Role;
+import com.devsam.housemanagement.Entity.User;
 import com.devsam.housemanagement.Repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,7 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 //        logic to get user from the database
 
-        PropertyManager user = (PropertyManager) userRepository.findByUsername(username)
+        User user = (User) userRepository.findByUsername(username)
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found with  email: "+ username));
 

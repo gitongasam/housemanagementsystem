@@ -1,6 +1,6 @@
 package com.devsam.housemanagement.Service.User;
 
-import com.devsam.housemanagement.Entity.PropertyManager;
+import com.devsam.housemanagement.Entity.User;
 import com.devsam.housemanagement.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,13 +21,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PropertyManager createUser(PropertyManager propertyManager) {
-        propertyManager.setPassword(passwordEncoder.encode(propertyManager.getPassword()));
-        return userRepository.save(propertyManager);
+    public User createUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
     }
 
     @Override
-    public PropertyManager updateUser(PropertyManager user) {
+    public User updateUser(User user) {
         return userRepository.save(user);
     }
 
@@ -37,12 +37,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PropertyManager getUserById(Long userId) {
+    public User getUserById(Long userId) {
         return userRepository.findById(userId).orElse(null);
     }
 
     @Override
-    public List<PropertyManager> getAllUsers() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 }

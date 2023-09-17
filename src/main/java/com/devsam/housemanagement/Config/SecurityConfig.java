@@ -1,10 +1,8 @@
 package com.devsam.housemanagement.Config;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.catalina.filters.CorsFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,9 +18,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 @Configuration
 @EnableMethodSecurity
@@ -67,24 +62,28 @@ public class SecurityConfig {
              .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((authorize) ->
                         //authorize.anyRequest().authenticated()
-                        authorize
-                                .requestMatchers("/users/login").permitAll()
-                                .requestMatchers("/users/all")
-                                .hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.GET, "/properties/**").permitAll()
-                                .requestMatchers("/properties/**").permitAll()
-                                .anyRequest().authenticated()
+                        authorize.requestMatchers(HttpMethod.GET, "/users/**").permitAll()
+                                .requestMatchers("/users/**").permitAll()
+
+
+
                 )
+             .authorizeHttpRequests((authorize) ->
+                     //authorize.anyRequest().authenticated()
+                     authorize.requestMatchers(HttpMethod.GET, "/properties/**").permitAll()
+                             .requestMatchers("/properties/**").permitAll()
+
+
+             )
              .httpBasic(Customizer.withDefaults());
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+
+
+
         return http.build();
-
     }
-
     @Bean
     public JWTAuthenticationFilter jwtAuthenticationFilter(){
         return new JWTAuthenticationFilter();
     }
-
-
 }
