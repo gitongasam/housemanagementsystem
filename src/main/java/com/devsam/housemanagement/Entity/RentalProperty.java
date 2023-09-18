@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,11 +17,12 @@ public class RentalProperty {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String address;
-    private int numberOfRooms;
-    private double rentAmount;
-    @ManyToOne
-    @JoinColumn(name = "property_manager_id")
-    private PropertyManager propertyManager;
+    private float rentAmount;
+    private String numberOfRooms;
 
+    @ManyToOne
+    //Adding the name
+    @JoinColumn(name = "property_id")
+    private PropertyManager propertyManagers;
 
 }

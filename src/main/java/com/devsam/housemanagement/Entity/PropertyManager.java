@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -20,7 +21,8 @@ public class PropertyManager {
     private String lastName;
     private String email;
     private String idNumber;
-    @OneToMany(mappedBy = "propertyManager", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<RentalProperty> rentalProperties = new HashSet<>();
+    @OneToMany
+    @JoinColumn(name = "rental_property")
+    private List<RentalProperty> rentalProperties;
 
 }

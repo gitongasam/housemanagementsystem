@@ -17,8 +17,4 @@ public class Tenants {
         private String email;
         private String idNumber;
         private String phoneNumber;
-        @ManyToOne
-        @JoinColumn(name = "rental_property_id")
-        private RentalProperty rentalProperty;
-
 }
